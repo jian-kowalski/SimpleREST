@@ -3,44 +3,50 @@ unit uCadastroClienteService;
 interface
 
 uses
-  uCliente, System.Classes, System.Generics.Collections;
+  uCliente, System.Classes, System.Generics.Collections, uICadastroClienteService, uICliente;
 
 type
-  TCadastroClienteService = class
+  TCadastroClienteService = class(TInterfacedObject, ICasdastroClienteService)
   private
   public
-    function Buscar(AnId: Integer): TCliente;
-    function Listar: TList<TCliente>;
-    function Adicionar(AoCliente: TCliente): TCliente;
-    function Alterar(AoCliente: TCliente): TCliente;
-    procedure Remover(AoCliente: TCliente);
+    function Buscar(AnId: Integer): ICliente;
+    function Listar: TList<ICliente>;
+    function Adicionar(AoCliente: ICliente): ICliente;
+    function Alterar(AoCliente: ICliente): ICliente;
+    procedure Remover(AoCliente: ICliente);
+    class function New: ICasdastroClienteService;
   end;
 
 implementation
 
-function TCadastroClienteService.Adicionar(AoCliente: TCliente): TCliente;
+function TCadastroClienteService.Adicionar(AoCliente: ICliente): ICliente;
 begin
-  
+  Result := AoCliente;
 end;
 
-function TCadastroClienteService.Alterar(AoCliente: TCliente): TCliente;
-begin
-
-end;
-
-function TCadastroClienteService.Buscar(AnId: Integer): TCliente;
+function TCadastroClienteService.Alterar(AoCliente: ICliente): ICliente;
 begin
 
 end;
 
-function TCadastroClienteService.Listar: TList<TCliente>;
+function TCadastroClienteService.Buscar(AnId: Integer): ICliente;
 begin
 
 end;
 
-procedure TCadastroClienteService.Remover(AoCliente: TCliente);
+function TCadastroClienteService.Listar: TList<ICliente>;
 begin
 
+end;
+
+procedure TCadastroClienteService.Remover(AoCliente: ICliente);
+begin
+
+end;
+
+class function TCadastroClienteService.New: ICasdastroClienteService;
+begin
+  Result := Create;
 end;
 
 end.

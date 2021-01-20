@@ -6,12 +6,17 @@ uses
   Web.WebReq,
   IdHTTPWebBrokerBridge,
   uPrincipal in 'src\uPrincipal.pas' {Form1},
+  uWebModule in 'src\core\uWebModule.pas' {WebModule1: TWebModule},
   uClienteController in 'src\api\uClienteController.pas',
-  uWebModule in 'src\core\uWebModule.pas' {WebModule1: TWebModule};
+  uCliente in 'src\domain\model\uCliente.pas',
+  uCadastroClienteService in 'src\domain\service\uCadastroClienteService.pas',
+  uICadastroClienteService in 'src\domain\service\uICadastroClienteService.pas',
+  uICliente in 'src\domain\model\uICliente.pas';
 
 {$R *.res}
 
 begin
+  ReportMemoryLeaksOnShutdown := True;
   if WebRequestHandler <> nil then
     WebRequestHandler.WebModuleClass := WebModuleClass;
   Application.Initialize;
